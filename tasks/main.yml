@@ -1,6 +1,9 @@
 ---
 - name: install redis packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - redis-server
+  apt:
+    name: {{ packages }}
+    state: latest
+  vars:
+    packages:
+      - redis-server
   notify: restart redis
